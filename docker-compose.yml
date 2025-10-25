@@ -1,6 +1,7 @@
 services:
   ubuntu-dev:
     build: .
+    platform: linux/amd64
     container_name: ubuntu-dev
     tty: true
     stdin_open: true
