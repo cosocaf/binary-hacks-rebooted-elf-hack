@@ -5,6 +5,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
   apt-get install -y --no-install-recommends \
     build-essential \
+    gdb \
+    gdb-server \
     ca-certificates \
     curl \
     git \
@@ -13,7 +15,7 @@ RUN apt-get update && \
 
 WORKDIR /workspace
 
-RUN gcc --version
+RUN gcc --version && gdb --version
 
 CMD ["/bin/bash"]
 

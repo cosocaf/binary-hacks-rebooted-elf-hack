@@ -8,4 +8,8 @@ services:
     volumes:
       - ./:/workspace
     working_dir: /workspace
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp=unconfined
 
