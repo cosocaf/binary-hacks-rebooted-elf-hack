@@ -1,0 +1,10 @@
+services:
+  ubuntu-dev:
+    build: .
+    container_name: ubuntu-dev
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./:/workspace
+    working_dir: /workspace
+
