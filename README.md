@@ -32,6 +32,19 @@ update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-14 100
 
 ### Mac (Apple silicon)
 
+#### Docker
+
+gdbでレジスタが見えません。see: <https://github.com/docker/for-mac/issues/6921>
+
+```
+git clone https://github.com/cosocaf/binary-hacks-rebooted-elf-hack.git
+cd binary-hacks-rebooted-elf-hack
+docker compose up -d --build
+docker compose exec ubuntu-dev bash
+```
+
+#### QEMU
+
 Dockerのplatform指定だとgdbでレジスタが見えなかったりするので、それが嫌であればqemu上にubuntuのcloud imageを立てます。(時間かかります)
 
 依存パッケージをインストールする:
@@ -55,7 +68,7 @@ qemu-img create -f qcow2 -F qcow2 -b ubuntu-noble-amd64.img ubuntu.qcow2 20G
 user-dataを作成する:
 
 下記内容のファイルを`user-data`という名前で保存
-(`<username>`, `<github_username>`, `<public_key>`は適宜置き換える)
+(`<username>`, `<github_username>`, `<public_key>`は適宜置き換える。`github_username`と`public_key`はどちらか片方でok)
 
 ```yaml
 #cloud-config
@@ -65,7 +78,7 @@ users:
     ssh_import_id:
       - gh:<github_username>
     groups: [sudo, adm]
-    sudo: ALL=(ALL) NOPASSD:ALL
+    sudo: ALL=(ALL) NOPASSWD:ALL
     shell: /bin/bash
     ssh_authorized_keys:
       - <public_key>
@@ -122,3 +135,19 @@ qemu-system-x86_64 \
   -display none \
   -serial mon:stdio
 ```
+
+初回セットアップに十数分かかると思います。
+
+立ち上げたqemuにsshで接続する:
+
+```sh
+ssh -p 2222 <username>@127.0.0.1
+```
+
+リポジトリをクローンする:
+
+```
+git clone https://github.com/cosocaf/binary-hacks-rebooted-elf-hack.git
+cd binary-hacks-rebooted-elf-hack
+```
+
