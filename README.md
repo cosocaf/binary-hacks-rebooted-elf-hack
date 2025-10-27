@@ -2,7 +2,7 @@
 
 Binary Hacks Rebooted 第二章 ELF Hackの輪読用リポジトリ
 
-[スライド](https://docs.google.com/presentation/d/1LJ5eFz2kTeRMJ8oTpsN59dQWn6kyZ6gnYUX-jx0c_Ms/edit?usp=drive_link)
+[スライド](https://docs.google.com/presentation/d/1LJ5eFz2kTeRMJ8oTpsN59dQWn6kyZ6gnYUX-jx0c_Ms/edit?usp=sharing)
 
 ## 環境構築
 
