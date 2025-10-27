@@ -2,6 +2,8 @@
 
 Binary Hacks Rebooted 第二章 ELF Hackの輪読用リポジトリ
 
+[スライド](https://docs.google.com/presentation/d/1LJ5eFz2kTeRMJ8oTpsN59dQWn6kyZ6gnYUX-jx0c_Ms/edit?usp=drive_link)
+
 ## 環境構築
 
 次のパッケージが入っているx86_64のlinux環境があればokです。
